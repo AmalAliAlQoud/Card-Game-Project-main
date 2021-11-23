@@ -15,8 +15,9 @@ function shuffle(array) {
 // varible
 const CARDS=document.querySelectorAll(".card");
 const oneCard=document.querySelector(".card i").className;
+const heart=document.getElementById("heart");
+let heartIndex=0;
 
-var count=0;
 var moves=0;
 var moveTxt=document.getElementById('moves');
 var selectedArr=[];
@@ -27,14 +28,12 @@ var selectedMatch=[];
 //functions
 for(let i=0;i<CARDS.length;i++) {
     CARDS[i].addEventListener("click",function(){
-       // console.log(CARDS[i].className);
-if(CARDS[i].className !='card open match'){
-       
-        open2cards(i);
-        var timerId=setTimeout(close2cards,2000);
-}
-
-});
+       //console.log(i);
+    if(CARDS[i].className !='card open match'){
+     open2cards(i);
+    var timerId=setTimeout(close2cards,2000);
+    }
+    });
 }
 
 function open2cards(i){
@@ -44,10 +43,16 @@ function open2cards(i){
         CARDS[i].classList.add("open");
         moves++;
         moveTxt.innerHTML=moves;
+        hideheart();
     }}
 }
 
-
+function hideheart(){
+    if(moves>8 & moves%8==0){
+        heart.children[heartIndex].style.display='none';
+        heartIndex++;
+         }
+}
 
  function close2cards(){
     if(selectedArr.length==2){
