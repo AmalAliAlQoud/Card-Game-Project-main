@@ -30,11 +30,95 @@ const timerTxt=document.getElementById("timer");
 
 
 //functions
+//const oneCard=document.querySelector(".card i");
+
+//for(let item of CARDS.childNodes){
+    
+//console.log((CARDS[0]));
+/*
+console.log('------');
+//console.log(oneCard);
+shuffle(CARDS);
+var cardArr=[];
+cardArr=shuffle(CARDS);
+var x=cardArr.length;
+console.log(x);
+*/
+var cardArr=[];
+var cardShuffle=[];
+
+const oneCard=document.querySelectorAll(".card i")
+console.log('one card');
+console.log(oneCard);//===================
+console.log('one card class tt');
+console.log(oneCard[0].className);
+console.log('after replace');
+oldClass=CARDS[0].childNodes[1].classList[1];
+for(let i of oneCard)
+cardArr.push(i);
+cardShuffle=shuffle(cardArr);
+console.log('card shffle arr');
+console.log(cardShuffle);//========================
+var f = cardShuffle[0].classList[3];
+console.log('f');
+console.log(f);
+for(let x=0;x<15;x++){
+    let shArr=cardShuffle[x];
+var fabClass = shArr.classList[0];
+var newClass = shArr.classList[1];
+//result='fab fa-php';
+let result1=fabClass.concat(' ');
+let result=result1.concat(newClass);
+//console.log('result');
+//console.log(result);
+oneCard[x].className=result;// here should change 
+}
+console.log('result yy');
+//console.log(result);
+
+console.log('one card class');
+
+//var cardArr=[];
+
+//console.log(cardArr);
+cardShuffle=shuffle(cardArr);
+console.log(cardShuffle[0].classList[1]); //cardShuffle is class names after random
+
+//CARDS.childNodes=cardShuffle;
+console.log(CARDS[0].childNodes[1].className);
+
+   // CARDS[0].childNodes[k].className=cardShuffle[k];
+   console.log('array Amal');
+   // CARDS[0].childNodes[1].classList.add(cardShuffle[0]);
+    console.log(CARDS[0].childNodes[1].classList[1]);
+    CARDS[0].childNodes[1].classList[1]=cardShuffle[0].classList[1];
+    console.log(CARDS[0].childNodes[1].classList[1]);
+
+var oldClass=CARDS[0].childNodes[1].classList[1];
+console.log('new Class');
+
+var newClass = cardShuffle[0].classList[1];
+console.log('old Class');
+console.log(oldClass);
+console.log('new class');
+console.log(newClass);
+console.log('first card class');
+//console.log(CARDS[0].childNodes[1].classList[1]);
+//console.log('first card class after remove');
+//pop(CARDS[0].childNodes[1].classList[1]);
+//console.log(CARDS[0].childNodes[1].classList);//return all class
+
+
+
+    //CARDS[0].classList.remove();
+  //  CARDS[0].classList.add();
+
+
+//==========================================
 for(let i=0;i<CARDS.length;i++) {
     CARDS[i].addEventListener("click",function(){
        if(timerOut){
         initTimer();
-
        }
 
         if(CARDS[i].className !='card open match'){
