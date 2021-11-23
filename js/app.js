@@ -29,7 +29,7 @@ for(let i=0;i<CARDS.length;i++) {
     CARDS[i].addEventListener("click",function(){
        // console.log(CARDS[i].className);
 if(CARDS[i].className !='card open match'){
-    console.log('inside loop');
+       
         open2cards(i);
         var timerId=setTimeout(close2cards,2000);
 }
@@ -42,6 +42,8 @@ function open2cards(i){
         selectedArr.push(CARDS[i]);
         if(selectedArr.length<=2){
         CARDS[i].classList.add("open");
+        moves++;
+        moveTxt.innerHTML=moves;
     }}
 }
 
