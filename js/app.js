@@ -14,22 +14,30 @@ function shuffle(array) {
 
 // varible
 const CARDS=document.querySelectorAll(".card");
-const oneCard=document.querySelector(".card i").className;
-const heart=document.getElementById("heart");
-let heartIndex=0;
+//const oneCard=document.querySelector(".card i").className;
+const heart=document.getElementById("heart"); // heart item
+let heartIndex=0; // var for index of heart
 
 var moves=0;
 var moveTxt=document.getElementById('moves');
-var selectedArr=[];
-var selectedMatch=[];
+var selectedArr=[]; // var for putting selected card in array
+var selectedMatch=[]; // var for putting match cards in array
+let time=0;
+let timerId=0;
+let timerOut=true;
+const timerTxt=document.getElementById("timer");
 
 
 
 //functions
 for(let i=0;i<CARDS.length;i++) {
     CARDS[i].addEventListener("click",function(){
-       //console.log(i);
-    if(CARDS[i].className !='card open match'){
+       if(timerOut){
+        initTimer();
+
+       }
+
+        if(CARDS[i].className !='card open match'){
      open2cards(i);
     var timerId=setTimeout(close2cards,2000);
     }
@@ -43,15 +51,15 @@ function open2cards(i){
         CARDS[i].classList.add("open");
         moves++;
         moveTxt.innerHTML=moves;
-        hideheart();
+        if(moves>8 & moves%8==0){// calling hide heart func if moves is 16 -24 -32
+            hideheart();
+        }
     }}
 }
 
-function hideheart(){
-    if(moves>8 & moves%8==0){
+function hideheart(){ // hide heart func
         heart.children[heartIndex].style.display='none';
         heartIndex++;
-         }
 }
 
  function close2cards(){
@@ -74,10 +82,8 @@ function hideheart(){
         selectedArr[1].classList.remove("open");
         selectedArr[1].classList.add("card");
         //console.log(selectedArr[1].className);
-
       }
         emptyarray();
-
     }
  }
 
@@ -88,3 +94,23 @@ function hideheart(){
     }
  }
 
+
+
+ const initTimer=() =>{
+   timerOut=false;
+    timerId=setInterval(()=>{
+        time++;
+        timeCount();
+    },1000);
+};
+
+ const timeCount=()=>{
+    const min=Math.floor(time/60);
+    const sec=time%60;
+    if(sec<10){
+        timerTxt.innerHTML= min+':0'+sec;
+        //'$(min):0$(sec)';
+    }else{
+        timerTxt.innerHTML=min+':'+sec;
+    }
+};
