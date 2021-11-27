@@ -90,8 +90,9 @@ function open2cards(i){
         selectedArr.push(CARDS[i]);
         if(selectedArr.length<=2){
         CARDS[i].classList.add("open");
-        moves++;
-        moveTxt.innerHTML=moves;
+        if(selectedArr.length==2)
+       { moves++;}
+        moveTxt.innerHTML=moves + " moves";
         if(moves>8 & moves%8==0){// calling hide heart func if moves is 16 -24 -32
             hideheart();
         }
