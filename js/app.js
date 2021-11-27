@@ -53,7 +53,7 @@ console.log(cardShuffle);//========================
 console.log('one card');
 console.log(oneCard);//===================
 
-let deck=document.getElementById('deck');
+let deck=document.getElementById('deck'); // deck is board
 for(let item of cardShuffle)
 {
     deck.append(item);
