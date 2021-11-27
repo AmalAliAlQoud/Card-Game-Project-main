@@ -35,27 +35,30 @@ const timerTxt=document.getElementById("timer");
 var cardArr=[];
 var cardShuffle=[];
 
-const oneCard=document.querySelectorAll(".card i")
+const oneCard=document.querySelectorAll(".card")
 console.log('one card');
 console.log(oneCard);//===================
 console.log('one card class tt');
 console.log(oneCard[0].className);
 
-for(let i=0;i<oneCard.length;i++)
-cardArr.push(oneCard[i]);
+
+cardArr=[...oneCard]; // [div, div, ...]
+
 cardShuffle=shuffle(cardArr);
 console.log('card shffle arr');
 console.log(cardShuffle);//========================
 console.log('card shufle class list');
-console.log(cardShuffle[0].className);//========================
-for(let i=0;i<16;i++)
-{
-    oneCard[i].className=cardShuffle[i].className;
-}
+console.log(cardShuffle);//========================
+
 console.log('one card');
 console.log(oneCard);//===================
 
+let deck=document.getElementById('deck');
+for(let item of cardShuffle)
+{
+    deck.append(item);
 
+}
 
 
 
